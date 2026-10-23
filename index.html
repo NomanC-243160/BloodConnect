@@ -1,0 +1,492 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloodConnect</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>BloodConnect</h1>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloodConnect | One Donation. One Life Saved.</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <div class="flex items-center gap-2">
+                <div class="text-3xl">🩸</div>
+                <h1 class="text-2xl font-bold text-red-600">
+                    BloodConnect
+                </h1>
+            </div>
+
+            <div class="hidden md:flex gap-7 font-medium items-center">
+
+                <a href="#" class="text-red-600">
+                    Home
+                </a>
+
+                <a href="#find-blood" class="hover:text-red-600">
+                  Find Blood
+                </a>
+
+                <a href="#donor" class="hover:text-red-600">
+                   Become a Donor
+                 </a>
+
+                <a href="#request" class="hover:text-red-600">
+                   Emergency Request
+                 </a>
+
+                <a href="dashboard.html"
+                  class="bg-red-600 text-white px-4 py-2 rounded-lg
+                  hover:bg-red-700 transition">
+
+                 📊 Dashboard
+
+                <a href="login.html"
+                  class="border-2 border-red-600
+                  text-red-600 px-4 py-2 rounded-lg
+                  hover:bg-red-600 hover:text-white
+                  transition">
+                
+                  Login
+
+                </a>
+
+                <a href="profile.html"
+                   class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition">
+                   👤 My Profile
+                </a>
+
+                </a>
+
+</div>
+
+            <button
+                onclick="toggleMobileMenu()"
+                class="md:hidden text-2xl">
+                ☰
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden px-6 pb-4 md:hidden">
+            <a href="#" class="block py-2">Home</a>
+            <a href="#find-blood" class="block py-2">Find Blood</a>
+            <a href="#donor" class="block py-2">Become a Donor</a>
+            <a href="#request" class="block py-2">Emergency Request</a>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-red-600 to-red-500 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+
+            <div>
+                <p class="uppercase tracking-widest font-semibold mb-4">
+                    Blood Donation Management System
+                </p>
+
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    Be Someone's
+                    <span class="text-red-100">
+                        Reason to Live.
+                    </span>
+                </h2>
+
+                <p class="text-lg text-red-100 mb-8 max-w-xl">
+                    Connect blood donors with people who need blood.
+                    Your one donation can help save a life.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#find-blood"
+                       class="bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        Find Blood
+                    </a>
+
+                    <a href="#donor"
+                       class="border-2 border-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-red-600 transition">
+                        Become a Donor
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-10 text-center">
+
+                    <div class="text-8xl mb-5">
+                        🩸
+                    </div>
+
+                    <h3 class="text-2xl font-bold">
+                        One Donation
+                    </h3>
+
+                    <p class="text-red-100 mt-2">
+                        Can Save Multiple Lives
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Statistics -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                <div class="stat-card">
+                    <h3 id="totalDonors">0</h3>
+                    <p>Total Donors</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="availableDonors">0</h3>
+                    <p>Available Donors</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="totalRequests">0</h3>
+                    <p>Blood Requests</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="emergencyRequests">0</h3>
+                    <p>Emergency Requests</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Find Blood -->
+    <section id="find-blood" class="py-20 bg-gray-50">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-12">
+                <p class="text-red-600 font-semibold">
+                    FIND BLOOD
+                </p>
+
+                <h2 class="text-4xl font-bold mt-2">
+                    Find a Blood Donor
+                </h2>
+
+                <p class="text-gray-500 mt-3">
+                    Search for available donors by blood group and location.
+                </p>
+            </div>
+
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+
+                <div class="grid md:grid-cols-3 gap-4">
+
+                    <select id="bloodGroup"
+                            class="input-field">
+                        <option value="">Select Blood Group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+
+                    <input
+                        id="location"
+                        type="text"
+                        placeholder="Enter location"
+                        class="input-field">
+
+                    <button
+                        onclick="searchDonors()"
+                        class="bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">
+                        🔍 Search Donors
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Donor Results -->
+            <div id="donorResults"
+                 class="grid md:grid-cols-3 gap-6 mt-8">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Become Donor -->
+    <section id="donor" class="py-20 bg-white">
+
+        <div class="max-w-4xl mx-auto px-6">
+
+            <div class="text-center mb-10">
+
+                <p class="text-red-600 font-semibold">
+                    SAVE A LIFE
+                </p>
+
+                <h2 class="text-4xl font-bold mt-2">
+                    Become a Blood Donor
+                </h2>
+
+                <p class="text-gray-500 mt-3">
+                    Register yourself and help someone in need.
+                </p>
+
+            </div>
+
+
+            <form id="donorForm"
+                  class="bg-gray-50 p-8 rounded-2xl shadow-md">
+
+                <div class="grid md:grid-cols-2 gap-5">
+
+                    <input
+                        type="text"
+                        id="donorName"
+                        placeholder="Full Name"
+                        class="input-field"
+                        required>
+
+                    <select
+                        id="donorBlood"
+                        class="input-field"
+                        required>
+
+                        <option value="">
+                            Select Blood Group
+                        </option>
+
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        id="donorAge"
+                        placeholder="Age"
+                        class="input-field"
+                        required>
+
+                    <input
+                        type="text"
+                        id="donorLocation"
+                        placeholder="Location"
+                        class="input-field"
+                        required>
+
+
+                    <input
+                        type="tel"
+                        id="donorPhone"
+                        placeholder="Phone Number"
+                        class="input-field"
+                        required>
+
+                    <input
+                        type="date"
+                        id="lastDonation"
+                        class="input-field">
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="w-full mt-6 bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition">
+
+                    Register as Donor
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Emergency Request -->
+    <section id="request"
+             class="py-20 bg-red-50">
+
+        <div class="max-w-4xl mx-auto px-6">
+
+            <div class="text-center mb-10">
+
+                <p class="text-red-600 font-semibold">
+                    EMERGENCY
+                </p>
+
+                <h2 class="text-4xl font-bold mt-2">
+                    Request Blood
+                </h2>
+
+                <p class="text-gray-500 mt-3">
+                    Submit an emergency blood request.
+                </p>
+
+            </div>
+
+
+            <form id="requestForm"
+                  class="bg-white p-8 rounded-2xl shadow-md">
+
+                <div class="grid md:grid-cols-2 gap-5">
+
+                    <input
+                        type="text"
+                        id="patientName"
+                        placeholder="Patient Name"
+                        class="input-field"
+                        required>
+
+                    <select
+                        id="requestBlood"
+                        class="input-field"
+                        required>
+
+                        <option value="">
+                            Required Blood Group
+                        </option>
+
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+
+                    </select>
+
+
+                    <input
+                        type="text"
+                        id="hospital"
+                        placeholder="Hospital Name"
+                        class="input-field"
+                        required>
+
+                    <input
+                        type="text"
+                        id="requestLocation"
+                        placeholder="Location"
+                        class="input-field"
+                        required>
+
+
+                    <input
+                        type="number"
+                        id="units"
+                        placeholder="Required Units"
+                        class="input-field"
+                        required>
+
+                    <input
+                        type="tel"
+                        id="contact"
+                        placeholder="Contact Number"
+                        class="input-field"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="w-full mt-6 bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition">
+
+                    Submit Emergency Request
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+
+            <h3 class="text-2xl font-bold text-red-500">
+                🩸 BloodConnect
+            </h3>
+
+            <p class="text-gray-400 mt-2">
+                One Donation. One Life Saved.
+            </p>
+
+            <p class="text-gray-500 text-sm mt-5">
+                © 2026 BloodConnect. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

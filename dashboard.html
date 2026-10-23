@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BloodConnect | Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="bg-gray-50">
+
+
+    <!-- Navbar -->
+
+    <nav class="bg-white shadow-md">
+
+        <div class="max-w-7xl mx-auto px-6 py-4
+                    flex justify-between items-center">
+
+            <a href="index.html"
+               class="flex items-center gap-2">
+
+                <span class="text-3xl">🩸</span>
+
+                <span class="text-2xl font-bold text-red-600">
+                    BloodConnect
+                </span>
+
+            </a>
+
+
+            <div class="flex items-center gap-4">
+
+    <div class="hidden sm:block text-right">
+
+        <p class="text-xs text-gray-500">
+            Logged in as
+        </p>
+
+        <p id="adminName"
+           class="font-bold">
+            Admin
+        </p>
+
+    </div>
+
+
+    <a href="index.html"
+       class="text-gray-600 hover:text-red-600">
+
+        Home
+
+    </a>
+
+
+    <button
+        onclick="logoutUser()"
+        class="bg-gray-900 text-white
+               px-4 py-2 rounded-lg
+               hover:bg-gray-700 transition">
+
+        🚪 Logout
+
+    </button>
+
+    </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Dashboard -->
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+
+
+        <!-- Heading -->
+
+        <div class="mb-10">
+
+            <p class="text-red-600 font-semibold">
+                MANAGEMENT SYSTEM
+            </p>
+
+            <h1 class="text-4xl font-bold mt-2">
+                Dashboard
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+                Monitor donors and blood requests.
+            </p>
+
+        </div>
+
+
+
+        <!-- Statistics -->
+
+        <div class="grid grid-cols-1 sm:grid-cols-2
+                    lg:grid-cols-4 gap-6">
+
+
+            <!-- Total Donors -->
+
+            <div class="bg-white rounded-2xl shadow-sm
+                        p-6 border">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Total Donors
+                        </p>
+
+                        <h2 id="dashboardDonors"
+                            class="text-4xl font-bold mt-2 text-red-600">
+
+                            0
+
+                        </h2>
+
+                    </div>
+
+                    <div class="text-4xl">
+                        👥
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Available Donors -->
+
+            <div class="bg-white rounded-2xl shadow-sm
+                        p-6 border">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Available Donors
+                        </p>
+
+                        <h2 id="dashboardAvailable"
+                            class="text-4xl font-bold mt-2 text-green-600">
+
+                            0
+
+                        </h2>
+
+                    </div>
+
+                    <div class="text-4xl">
+                        🩸
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Requests -->
+
+            <div class="bg-white rounded-2xl shadow-sm
+                        p-6 border">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Blood Requests
+                        </p>
+
+                        <h2 id="dashboardRequests"
+                            class="text-4xl font-bold mt-2 text-blue-600">
+
+                            0
+
+                        </h2>
+
+                    </div>
+
+                    <div class="text-4xl">
+                        📋
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Emergency -->
+
+            <div class="bg-white rounded-2xl shadow-sm
+                        p-6 border">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Emergency
+                        </p>
+
+                        <h2 id="dashboardEmergency"
+                            class="text-4xl font-bold mt-2 text-orange-600">
+
+                            0
+
+                        </h2>
+
+                    </div>
+
+                    <div class="text-4xl">
+                        🚨
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Blood Groups -->
+
+        <div class="grid lg:grid-cols-2 gap-6 mt-8">
+
+
+            <!-- Blood Availability -->
+
+            <div class="bg-white rounded-2xl shadow-sm
+                        border p-6">
+
+                <h2 class="text-2xl font-bold">
+                    Blood Group Availability
+                </h2>
+
+                <p class="text-gray-500 mt-1">
+                    Current registered donors
+                </p>
+
+
+                <div id="bloodGroups"
+                     class="mt-6 space-y-5">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Recent Donors -->
+
+            <div class="bg-white rounded-2xl shadow-sm
+                        border p-6">
+
+                <div class="flex justify-between items-center">
+
+                    <div>
+
+                        <h2 class="text-2xl font-bold">
+                            Recent Donors
+                        </h2>
+
+                        <p class="text-gray-500 mt-1">
+                            Recently registered donors
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="recentDonors"
+                     class="mt-6 space-y-4">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Donor Management -->
+
+<div class="bg-white rounded-2xl shadow-sm border p-6 mt-8">
+
+    
+<div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4">
+
+    <div>
+        <h2 class="text-2xl font-bold">
+            👥 Donor Management
+        </h2>
+
+        <p class="text-gray-500 mt-1">
+            Search and manage registered blood donors.
+        </p>
+    </div>
+
+
+    <!-- Search & Filter -->
+    <div class="flex flex-col sm:flex-row gap-3">
+
+        <input
+            type="text"
+            id="donorSearch"
+            oninput="filterDonors()"
+            placeholder="🔍 Search donor..."
+            class="border border-gray-200 rounded-lg px-4 py-3 outline-none focus:border-red-500"
+        >
+
+
+        <select
+            id="bloodFilter"
+            onchange="filterDonors()"
+            class="border border-gray-200 rounded-lg px-4 py-3 outline-none focus:border-red-500">
+
+            <option value="">All Blood Groups</option>
+
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+
+    <div class="overflow-x-auto mt-6">
+
+        <table class="w-full text-left">
+
+           
+<thead>
+    <tr class="border-b bg-gray-50">
+
+        <th class="p-3">
+            Name
+        </th>
+
+        <th class="p-3">
+            Blood
+        </th>
+
+        <th class="p-3">
+            Location
+        </th>
+
+        <th class="p-3">
+            Phone
+        </th>
+
+        <th class="p-3">
+            Status
+        </th>
+
+        <th class="p-3">
+            Action
+        </th>
+
+    </tr>
+</thead>
+
+
+            <tbody id="donorTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+        <!-- Emergency Requests -->
+
+        <div class="bg-white rounded-2xl shadow-sm
+                    border p-6 mt-8">
+
+            <h2 class="text-2xl font-bold">
+                🚨 Emergency Blood Requests
+            </h2>
+
+            <p class="text-gray-500 mt-1">
+                Recent emergency requests
+            </p>
+
+
+            <div class="overflow-x-auto mt-6">
+
+                <table class="w-full text-left">
+
+                    <thead>
+
+                        <tr class="border-b">
+
+                            <th class="p-3">
+                                Patient
+                            </th>
+
+                            <th class="p-3">
+                                Blood
+                            </th>
+
+                            <th class="p-3">
+                                Hospital
+                            </th>
+
+                            <th class="p-3">
+                                Location
+                            </th>
+
+                            <th class="p-3">
+                                Units
+                            </th>
+
+                            <th class="p-3">
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="requestTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

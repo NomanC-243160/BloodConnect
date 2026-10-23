@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* Input */
+.input-field {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    outline: none;
+    background: white;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+
+/* Statistics */
+.stat-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card h3 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #dc2626;
+}
+
+.stat-card p {
+    margin-top: 5px;
+    color: #6b7280;
+}
+
+
+/* Donor Card */
+.donor-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.donor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .hero-title {
+        font-size: 40px;
+    }
+
+}
